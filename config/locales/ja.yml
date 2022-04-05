@@ -1,0 +1,6 @@
+ja:
+  enums:
+    activity_point:
+      activity_status:
+        photographer: "カメラマン"
+        subject: "モデル"

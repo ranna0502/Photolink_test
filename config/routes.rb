@@ -21,10 +21,10 @@ scope module: :public do
   resources :notifications, only: [:index]
   resources :activity_points, only: [:new, :create, :show, :edit, :update, :destroy]
 
+  get 'users/info' => 'users#info'
   get 'users/matching' => 'users#matching'
   get 'users/unsubscribe' => 'users#unsubscribe'
   patch 'users/withdraw' => 'users#withdraw'
-
   resources "users", path: 'users/my_page', only: [:show, :edit, :update]
 
   root to: "homes#top"

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  has_one_attached :profile_image
   has_many :activity_points
   has_many :reactions
   has_many :chat_room_users
@@ -21,4 +23,8 @@ class User < ApplicationRecord
     end
   end
 
+# プロフィール画像
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
 end

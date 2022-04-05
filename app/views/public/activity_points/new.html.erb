@@ -1,1 +1,49 @@
-<h1>activity_points/new</h1>
+<div><h1>活動地点登録</h1></div>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <!--infoの部分テンプレート引用-->
+      <!--< render 'users/info', user: @user %>-->
+
+      <h6>今日の活動地点を登録しましょう</h6>
+      <%= form_with model: @activity_point, local:true do |f| %>
+        <!--errorsの部分テンプレート引用-->
+        <%= render 'layouts/errors', obj: @activity_point %>
+
+        <div class="form-group">
+          <%= f.label :日付 %>
+          <%= f.text_field :date, class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :時間帯 %>
+          <%= f.text_field :time_zone, class: "form-control time_zone" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :人数 %>
+          <%= f.text_field :person, class: "form-control person" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :活動予定地点 %>
+          <%= f.text_field :address, class: "form-control address" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :どちらを募集していますか？ %></br>
+          <!--カメラマンのラジオボタン-->
+          <%= f.radio_button :activity_status, ActivityPoint.activity_statuses.key(0) %>
+          <%= f.label :activity_status, ActivityPoint.activity_statuses_i18n[:photographer] %>
+          </br>
+          <!--モデルのラジオボタン-->
+          <%= f.radio_button :activity_status, ActivityPoint.activity_statuses.key(1) %>
+          <%= f.label :activity_status, ActivityPoint.activity_statuses_i18n[:subject]%>
+        </div>
+        <div class="form-group">
+          <%= f.label :要望 %>
+          <%= f.text_area :request, class: "form-control request" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "登録する", class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
