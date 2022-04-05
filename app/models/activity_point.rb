@@ -1,0 +1,2 @@
+class ActivityPoint < ApplicationRecord
+end
